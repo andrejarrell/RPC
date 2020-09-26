@@ -1,6 +1,6 @@
 # Discord RPC
 
-> Discord Rich Presence enabled you to further customize your status on Discord.
+> Discord Rich Presence enables you to further customize your status on Discord.
 
 ## 🛠 Setup
 
