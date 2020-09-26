@@ -2,6 +2,8 @@
 
 > Discord Rich Presence enables you to further customize your status on Discord.
 
+<img alt="rpc" src="https://raw.githubusercontent.com/andrejarrell/RPC/master/src/img/screenshot.jpg">
+
 ## 🛠 Setup
 
 - [x] Create an application at [Discord's Developer Portal](https://discord.com/developers/applications)
