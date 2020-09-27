@@ -13,7 +13,6 @@ let createWindow = () => {
             nodeIntegration: true
         }
     });
-    if (production) window.setMenu(null);
     window.loadFile('src/index.html');
     window.setIcon('src/img/logo.png');
     window.setTitle(`Discord RPC ${package.version}`);
