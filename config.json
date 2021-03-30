@@ -1,10 +1,14 @@
 {
-    "clientId": "",
-    "timestamp": "Disable",
-    "state": "",
-    "details": "",
-    "largeImageKey": "",
-    "largeImageText": "",
+    "clientId": "726804885043150879",
+    "timestamp": "Enable",
+    "state": "👨‍💻 Using Listcord RPC",
+    "details": "💪 Free Bot & Server Listing",
+    "largeImageKey": "logo",
+    "largeImageText": "Listcord.net",
     "smallImageKey": "",
-    "smallImageText": ""
+    "smallImageText": "",
+    "buttonOneText": "Join Server",
+    "buttonOneUrl": "https://listcord.ga",
+    "buttonTwoText": "Visit Website",
+    "buttonTwoUrl": "https://listcord.net"
 }

@@ -1,21 +1,33 @@
 {
-  "name": "rpc",
+  "name": "@listcord/rpc",
   "version": "1.0.0",
   "main": "index.js",
-  "description": "Discord RPC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Listcord/RPC.git"
+  },
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager ./ --all"
+    "build": "electron-packager . \"Listcord RPC\" --platform=win32,linux --icon=src/img/logo --out=build --overwrite"
   },
   "author": "Andre Jarrell <mail@andrejarrell.com> (https://andrejarrell.com)",
+  "bugs": {
+    "url": "https://github.com/Listcord/RPC/issues"
+  },
+  "homepage": "https://github.com/Listcord/RPC#readme",
   "license": "MIT",
   "dependencies": {
-    "bootstrap": "^4.5.2",
-    "discord-rpc": "^3.1.4",
-    "jquery": "^3.5.1",
-    "popper.js": "^1.16.1"
+    "bootstrap": "^4.6.0",
+    "discord-rpc": "^3.2.0",
+    "electron": "^12.0.2",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1",
+    "validator": "^13.5.2"
+  },
+  "engine": {
+    "node": "14.x"
   },
   "devDependencies": {
-    "electron": "^10.1.2"
+    "electron-packager": "^15.2.0"
   }
 }
