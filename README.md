@@ -6,9 +6,7 @@
 
 ### Listcord RPC enables you to further customize your status on Discord
 
-<img src="https://raw.githubusercontent.com/listcord/rpc/master/src/img/rpc.png">
-
-<img src="https://raw.githubusercontent.com/listcord/rpc/master/src/img/app.png">
+![rpc](https://user-images.githubusercontent.com/33952641/112995901-0be82680-91af-11eb-9342-b4fe7280dacd.png)
 
 ## 🛠 Setup
 

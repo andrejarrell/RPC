@@ -1,7 +1,8 @@
+    let menu = require('./menu')
 let rpc = require('discord-rpc')
 let validator = require('validator')
 let config = require('./config.json')
-let { app, BrowserWindow, ipcMain } = require('electron')
+let { app, ipcMain, BrowserWindow, Menu } = require('electron')
 
 let createWindow = () => {
     global.window = new BrowserWindow({
@@ -12,10 +13,10 @@ let createWindow = () => {
             contextIsolation: false
         }
     })
-    window.removeMenu()
     window.loadFile('src/index.html')
     window.setIcon('src/img/logo.png')
     window.setTitle('Listcord RPC')
+    Menu.setApplicationMenu(menu)
 }
 
 app.on('ready', createWindow)

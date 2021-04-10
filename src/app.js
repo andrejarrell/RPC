@@ -24,10 +24,10 @@ class App {
         ipcRenderer.send('update', this.config)
     }
 
-    alert(event, alert) {
+    alert(event, content) {
         $('#alert').html(`
-            <div class="alert alert-dismissible text-center fade show alert-${alert.type} mb-4">
-                ${alert.message.toUpperCase()}
+            <div class="alert text-center alert-${content.type} mb-4">
+                <strong>${content.message.toUpperCase()}</strong>
             </div>
         `)
     }
@@ -35,5 +35,5 @@ class App {
 
 let app = new App
 
-ipcRenderer.on('alert', app.alert)
 ipcRenderer.send('ready')
+ipcRenderer.on('alert', app.alert)
