@@ -2,7 +2,7 @@ let $ = require('jquery')
 require('bootstrap')
 require('popper.js')
 let fs = require('fs')
-let { ipcRenderer } = require('electron')
+let { ipcRenderer, shell } = require('electron')
 
 class App {
     constructor() {

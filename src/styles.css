@@ -9,6 +9,10 @@ body {
     display: none;
 }
 
+a {
+    color: #00c9a7 !important;
+}
+
 h1, h2, h3, h4, h5, h6, p {
     color: #e8e6e3 !important;
 }
@@ -58,7 +62,16 @@ input, select {
     background-color: rgba(0,201,167,.1);
 }
 
-.form-control:focus {
+.btn:focus, .form-control:focus {
     -webkit-box-shadow: 0 0 0 0.2rem #00c9a7;
     box-shadow: 0 0 0 0.2rem #00c9a7;
+}
+
+.btn {
+    color: #00c9a7;
+    background-color: rgba(0,201,167,.1);
+}
+
+.btn:hover {
+    background-color :#00c9a7;
 }

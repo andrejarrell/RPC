@@ -111,6 +111,23 @@
                     </div>
                 </div>
             </div>
+            <footer class="mb-4 text-center">
+                    <button class="btn mx-1" onclick="shell.openExternal('https://listcord.net/rpc')">
+                        GitHub
+                    </button>
+                    <button class="btn mx-1" onclick="shell.openExternal('https://listcord.ga')">
+                        Discord
+                    </button>
+                    <button class="btn mx-1" onclick="shell.openExternal('https://listcord.net')">
+                        Website
+                    </button>
+                    <button class="btn mx-1" onclick="ipcRenderer.send('reload')">
+                        🔄
+                    </button>
+                    <button class="btn mx-1" onclick="ipcRenderer.send('devtools')">
+                        👨‍💻
+                    </button>
+            </footer>
         </div>
         <script src="app.js"></script>
     </body>

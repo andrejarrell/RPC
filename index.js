@@ -1,22 +1,27 @@
-    let menu = require('./menu')
 let rpc = require('discord-rpc')
 let validator = require('validator')
 let config = require('./config.json')
-let { app, ipcMain, BrowserWindow, Menu } = require('electron')
+let { app, ipcMain, BrowserWindow, globalShortcut } = require('electron')
 
 let createWindow = () => {
     global.window = new BrowserWindow({
-        width: 1000,
-        height: 1200,
+        width: 800,
+        height: 880,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
         }
     })
+    window.removeMenu()
     window.loadFile('src/index.html')
     window.setIcon('src/img/logo.png')
     window.setTitle('Listcord RPC')
-    Menu.setApplicationMenu(menu)
+    globalShortcut.register('CommandOrControl+R', () => {
+        window.reload()
+    })
+    globalShortcut.register('CommandOrControl+Shift+I', () => {
+        window.toggleDevTools()
+    })
 }
 
 app.on('ready', createWindow)
@@ -106,6 +111,8 @@ let update = (event, config) => {
 
 ipcMain.on('update', update)
 ipcMain.on('ready', () => login(config))
+ipcMain.on('reload', () => window.reload())
+ipcMain.on('devtools', () => window.toggleDevTools())
 
 process.on('uncaughtException', console.error)
 process.on('unhandledRejection', reject => {
