@@ -63,8 +63,8 @@ input, select {
 }
 
 .btn:focus, .form-control:focus {
-    -webkit-box-shadow: 0 0 0 0.2rem #00c9a7;
-    box-shadow: 0 0 0 0.2rem #00c9a7;
+    -webkit-box-shadow: 0 0 0 2px #00c9a7;
+    box-shadow: 0 0 0 2px #00c9a7;
 }
 
 .btn {
@@ -74,4 +74,8 @@ input, select {
 
 .btn:hover {
     background-color :#00c9a7;
+}
+
+.card, .alert, input, select, .btn {
+    border-radius: 0.75rem !important;
 }
