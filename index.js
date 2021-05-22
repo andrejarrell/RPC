@@ -14,7 +14,7 @@ let createWindow = () => {
     })
     window.removeMenu()
     window.loadFile('src/index.html')
-    window.setIcon('src/img/logo.png')
+    window.setIcon('src/img/icon.png')
     window.setTitle('Listcord RPC')
     globalShortcut.register('CommandOrControl+R', () => {
         window.reload()
