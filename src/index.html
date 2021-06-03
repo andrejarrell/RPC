@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="neon.min.css">
         <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap">
     </head>
     <body>
         <div class="container mt-4">
@@ -112,21 +112,21 @@
                 </div>
             </div>
             <footer class="mb-4 text-center">
-                    <button class="btn mx-1" onclick="shell.openExternal('https://listcord.net/rpc')">
-                        GitHub
-                    </button>
-                    <button class="btn mx-1" onclick="shell.openExternal('https://listcord.ga')">
-                        Discord
-                    </button>
-                    <button class="btn mx-1" onclick="shell.openExternal('https://listcord.net')">
-                        Website
-                    </button>
-                    <button class="btn mx-1" onclick="ipcRenderer.send('reload')">
-                        🔄
-                    </button>
-                    <button class="btn mx-1" onclick="ipcRenderer.send('devtools')">
-                        👨‍💻
-                    </button>
+                <button class="btn mx-1" onclick="app.open('https://listcord.net/rpc')">
+                    GitHub
+                </button>
+                <button class="btn mx-1" onclick="app.open('https://listcord.ga')">
+                    Discord
+                </button>
+                <button class="btn mx-1" onclick="app.open('https://listcord.net')">
+                    Website
+                </button>
+                <button class="btn mx-1" onclick="app.send('reload')" title="Reload">
+                    🔄
+                </button>
+                <button class="btn mx-1" onclick="app.send('devtools')" title="Developer Tools">
+                    👨‍💻
+                </button>
             </footer>
         </div>
         <script src="app.js"></script>

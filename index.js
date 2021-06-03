@@ -1,7 +1,13 @@
+let { 
+    app,
+    ipcMain,
+    BrowserWindow,
+    globalShortcut
+} = require('electron')
 let rpc = require('discord-rpc')
 let validator = require('validator')
-let config = require('./config.json')
-let { app, ipcMain, BrowserWindow, globalShortcut } = require('electron')
+let Store = require('electron-store')
+let defaultConfig = require('./default.json')
 
 let createWindow = () => {
     global.window = new BrowserWindow({
@@ -34,9 +40,10 @@ app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
 })
 
+let store = new Store()
 let client = new rpc.Client({ transport: 'ipc' })
 
-let setActivity = config => {
+let setActivity = () => {
     let activity = {}
     let {
         state,
@@ -50,7 +57,7 @@ let setActivity = config => {
         buttonOneText,
         buttonTwoUrl,
         buttonTwoText
-    } = config
+    } = store.get('config', defaultConfig)
     if (timestamp === 'Enable')
         activity.timestamps = {
             start: Date.now()
@@ -78,7 +85,6 @@ let setActivity = config => {
                 url: buttonTwoUrl,
                 label: buttonTwoText
             }) : null
-    
     client.request('SET_ACTIVITY', {
         activity,
         pid: process.pid
@@ -89,34 +95,36 @@ let setActivity = config => {
     })
 }
 
-let login = config => {
-    if (!config.clientId) {
+let login = () => {
+    let { clientId } = store.get('config', defaultConfig)
+    if (!clientId) {
         return window.webContents.send('alert', {
             type: 'warning',
             message: 'Make sure to supply a Client ID!'
         })
     }
-    client.login({ clientId: config.clientId })
-    client.once('ready', () => setActivity(config))
+    client.login({ clientId })
+    client.once('ready', setActivity)
 }
 
-let update = (event, config) => {
-    if (client.clientId !== config.clientId) {
+let update = () => {
+    let { clientId } = store.get('config') 
+    if (client.clientId !== clientId) {
         client.destroy()
-        login(config)
+        login()
     } else {
-        setActivity(config)
+        setActivity()
     }
 }
 
+ipcMain.on('ready', login)
 ipcMain.on('update', update)
-ipcMain.on('ready', () => login(config))
 ipcMain.on('reload', () => window.reload())
 ipcMain.on('devtools', () => window.toggleDevTools())
 
 process.on('uncaughtException', console.error)
-process.on('unhandledRejection', reject => {
-    console.log(reject)
+process.on('unhandledRejection', rejection => {
+    console.error(rejection)
     window.webContents.send('alert', {
         type: 'danger',
         message: 'Could not connect to RPC!'

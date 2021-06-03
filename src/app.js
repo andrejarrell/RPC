@@ -1,33 +1,42 @@
 let $ = require('jquery')
 require('bootstrap')
 require('popper.js')
-let fs = require('fs')
-let { ipcRenderer, shell } = require('electron')
+let {
+    shell,
+    ipcRenderer
+} = require('electron')
+let Store = require('electron-store')
+let defaultConfig = require('../default.json')
+
+let store = new Store()
 
 class App {
     constructor() {
-        this.config = require('../config.json')
-        let props = Object.keys(this.config)
-        props.forEach(prop => {
-            let element = $(`#${prop}`)
-            element.val(this.config[prop])
+        let config = store.get('config', defaultConfig)
+        let properties = Object.keys(config)
+        properties.forEach(property => {
+            let element = $(`#${property}`)
+            element.val(config[property])
             element.on('change', () => {
-                this.config[prop] = element.val()
-                this.update()
+                let value = element.val()
+                store.set(`config.${property}`, value)
+                this.send('update')
             })
         })
     }
 
-    async update() {
-        let json = JSON.stringify(this.config, null, 4)
-        await fs.promises.writeFile('config.json', json)
-        ipcRenderer.send('update', this.config)
+    open(link) {
+        shell.openExternal(link)
     }
 
-    alert(event, content) {
+    send(event) {
+        ipcRenderer.send(event)
+    }
+
+    alert(event, data) {
         $('#alert').html(`
-            <div class="alert text-center alert-${content.type} mb-4">
-                <strong>${content.message.toUpperCase()}</strong>
+            <div class="alert text-center alert-${data.type} mb-4">
+                <strong>${data.message.toUpperCase()}</strong>
             </div>
         `)
     }
@@ -35,5 +44,5 @@ class App {
 
 let app = new App
 
-ipcRenderer.send('ready')
+app.send('ready')
 ipcRenderer.on('alert', app.alert)
