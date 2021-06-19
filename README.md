@@ -35,23 +35,4 @@
 `npm start`
 
 > Downloading Electron for the first time may awhile
-
-## ⚙ Settings
-
-Settings are saved in `config.json` 
-
-| Name | Type | Required |
-| -- | -- | -- |
-| `clientId` | `String` | `true` |
-| `timestamp` | `String` | `false` |
-| `state` | `String` | `false` |
-| `details` | `String` | `false` |
-| `largeImageKey` | `String` | `false` |
-| `largeImageText` | `String` | `false` |
-| `smallImageKey` | `String` | `false` |
-| `smallImageText` | `String` | `false` |
-| `buttonOneText` | `String` | `false` |
-| `buttonOneUrl` | `String` | `false` |
-| `buttonTwoText` | `String` | `false` |
-| `buttonTwoUrl` | `String` | `false` |
 </details>
