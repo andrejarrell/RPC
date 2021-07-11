@@ -1,6 +1,6 @@
 {
   "name": "@listcord/rpc",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
   "dependencies": {
     "bootstrap": "^4.6.0",
     "discord-rpc": "^4.0.1",
-    "electron": "^13.1.4",
+    "electron": "^13.1.6",
     "electron-store": "^8.0.0",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
